@@ -11,7 +11,8 @@ class Server {
 
         /* define endpoints */
         this.paths = {
-            auth: '/api/auth'
+            auth: '/api/auth',
+            category: '/api/category',
         };
 
         this.dbConnect();
@@ -35,6 +36,7 @@ class Server {
     routes() {
 
         this.app.use(this.paths.auth, require('../routes/auth'));
+        this.app.use(this.paths.category, require('../routes/category'));
 
     }
 

@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Category = require('../models/category');
 
 const emailExists = async(email) => {
     const checkEmail = await User.findOne({email});
@@ -16,7 +17,26 @@ const usernameExists = async(username) => {
     }
 };
 
+const categoryNameExists = async(name) => {
+    const categoryName = name.toUpperCase();
+    const categoryDB = await Category.findOne({name: categoryName});
+
+    if (categoryDB) {
+        throw new Error(`La categoría ${categoryDB.name} ya existe`);
+    }
+};
+
+const categoryExists = async(id) => {
+    const category = await Category.findById(id);
+
+    if (!category) {
+        throw new Error('La categoría no existe');
+    }
+};
+
 module.exports = {
     emailExists,
-    usernameExists
+    usernameExists,
+    categoryNameExists,
+    categoryExists
 };
