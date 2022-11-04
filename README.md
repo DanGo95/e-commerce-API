@@ -1,6 +1,6 @@
-# express-basic-server
+# eCommerce-API
 
-Server básico utilizando express.
+API para un eCommerce.
 
 ## Uso del proyecto
 
