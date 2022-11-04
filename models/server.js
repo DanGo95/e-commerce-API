@@ -9,18 +9,13 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
 
-        /* define los endpoints de la api */
+        /* define endpoints */
         this.paths = {
-            /* auth: '/api/auth' */
+            auth: '/api/auth'
         };
 
-        /* conexión a db */
         this.dbConnect();
-
-        /* middlewares */
         this.middlewares();
-
-        /* rutas */
         this.routes();
 
     }
@@ -30,21 +25,16 @@ class Server {
         await dbConnection();
     }
 
-    /* configura los middlewares que se utilizarán */
     middlewares() {
-
-        /* cors */
         this.app.use(cors());
         /* body parse */
         this.app.use(express.json());
-        /* directorio público */
         this.app.use(express.static('public'));
-
     }
 
     routes() {
 
-        /* this.app.use(this.paths.auth, require('../routes/auth')); */
+        this.app.use(this.paths.auth, require('../routes/auth'));
 
     }
 
