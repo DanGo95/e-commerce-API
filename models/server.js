@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('../database/config');
 
@@ -12,7 +12,7 @@ class Server {
         /* define los endpoints de la api */
         this.paths = {
             /* auth: '/api/auth' */
-        }
+        };
 
         /* conexión a db */
         this.dbConnect();
@@ -51,7 +51,7 @@ class Server {
     listen() {
         this.app.listen(this.port, () => {
             console.log('corriendo en el puerto', this.port);
-        })
+        });
     }
 
 }
