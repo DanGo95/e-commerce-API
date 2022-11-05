@@ -13,6 +13,7 @@ class Server {
         this.paths = {
             auth: '/api/auth',
             category: '/api/category',
+            subcategory: '/api/subcategory',
         };
 
         this.dbConnect();
@@ -37,6 +38,7 @@ class Server {
 
         this.app.use(this.paths.auth, require('../routes/auth'));
         this.app.use(this.paths.category, require('../routes/category'));
+        this.app.use(this.paths.subcategory, require('../routes/subcategory'));
 
     }
 
